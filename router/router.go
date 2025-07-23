@@ -1,0 +1,12 @@
+package router
+
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/kryast/Crud-7.git/handlers"
+)
+
+func SetupRouter(ph *handlers.ProductHandler, sh *handlers.SupplierHandler, psh *handlers.ProductStockHandler) *gin.Engine {
+	r := gin.Default()
+
+	return r
+}
