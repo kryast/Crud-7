@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/kryast/Crud-7.git/models"
@@ -23,4 +24,19 @@ func (h *ProductHandler) Create(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusCreated, m)
+}
+
+func (h *ProductHandler) GetAll(c *gin.Context) {
+	ms, _ := h.svc.All()
+	c.JSON(http.StatusOK, ms)
+}
+
+func (h *ProductHandler) GetByID(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+	m, err := h.svc.ByID(uint(id))
+	if err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "not found"})
+		return
+	}
+	c.JSON(http.StatusOK, m)
 }

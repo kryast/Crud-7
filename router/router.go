@@ -10,6 +10,8 @@ func SetupRouter(ph *handlers.ProductHandler, sh *handlers.SupplierHandler, psh 
 
 	// Product routes
 	r.POST("/products", ph.Create)
+	r.GET("/products", ph.GetAll)
+	r.GET("/products/:id", ph.GetByID)
 
 	return r
 }
