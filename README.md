@@ -8,3 +8,6 @@ curl -X POST http://localhost:8080/products -H "Content-Type: application/json" 
 GET
 curl http://localhost:8080/products
 curl http://localhost:8080/products/1
+
+PUT
+curl -X PUT http://localhost:8080/products/1 -H "Content-Type: application/json" -d '{"name":"Kabel HDMI Premium","category":"Aksesoris","price":95000}'

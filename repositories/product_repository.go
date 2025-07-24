@@ -9,6 +9,7 @@ type ProductRepository interface {
 	Create(product *models.Product) error
 	FindAll() ([]models.Product, error)
 	FindByID(id uint) (models.Product, error)
+	Update(product *models.Product) error
 }
 
 type productRepo struct{ db *gorm.DB }
@@ -26,3 +27,5 @@ func (r *productRepo) FindByID(id uint) (models.Product, error) {
 	var product models.Product
 	return product, r.db.First(&product, id).Error
 }
+
+func (r *productRepo) Update(product *models.Product) error { return r.db.Save(product).Error }
