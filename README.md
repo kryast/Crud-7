@@ -11,3 +11,6 @@ curl http://localhost:8080/products/1
 
 PUT
 curl -X PUT http://localhost:8080/products/1 -H "Content-Type: application/json" -d '{"name":"Kabel HDMI Premium","category":"Aksesoris","price":95000}'
+
+DELETE
+curl -X DELETE http://localhost:8080/products/1
