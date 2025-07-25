@@ -12,6 +12,7 @@ type ProductStockService interface {
 	All() ([]models.ProductStock, error)
 	ByID(id uint) (models.ProductStock, error)
 	Update(*models.ProductStock) error
+	Delete(id uint) error
 }
 
 type productStockService struct {
@@ -41,3 +42,5 @@ func (s *productStockService) Update(m *models.ProductStock) error {
 	}
 	return s.repo.Update(m)
 }
+
+func (s *productStockService) Delete(id uint) error { return s.repo.Delete(id) }

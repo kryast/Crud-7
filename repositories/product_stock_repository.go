@@ -10,6 +10,7 @@ type ProductStockRepository interface {
 	FindAll() ([]models.ProductStock, error)
 	FindByID(id uint) (models.ProductStock, error)
 	Update(stock *models.ProductStock) error
+	Delete(id uint) error
 }
 
 type productStockRepo struct{ db *gorm.DB }
@@ -31,3 +32,7 @@ func (r *productStockRepo) FindByID(id uint) (models.ProductStock, error) {
 }
 
 func (r *productStockRepo) Update(stock *models.ProductStock) error { return r.db.Save(stock).Error }
+
+func (r *productStockRepo) Delete(id uint) error {
+	return r.db.Delete(&models.ProductStock{}, id).Error
+}
