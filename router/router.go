@@ -22,5 +22,8 @@ func SetupRouter(ph *handlers.ProductHandler, sh *handlers.SupplierHandler, psh 
 	r.PUT("/suppliers/:id", sh.Update)
 	r.DELETE("/suppliers/:id", sh.Delete)
 
+	// ProductStock routes
+	r.POST("/product-stocks", psh.Create)
+
 	return r
 }

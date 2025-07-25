@@ -30,3 +30,9 @@ curl -X PUT http://localhost:8080/suppliers/1 -H "Content-Type: application/json
 
 DELETE
 curl -X DELETE http://localhost:8080/suppliers/1
+
+
+Product Stock
+
+POST
+curl -X POST http://localhost:8080/product-stocks -H "Content-Type: application/json" -d '{"product_id":1,"supplier_id":1,"quantity":100}'
