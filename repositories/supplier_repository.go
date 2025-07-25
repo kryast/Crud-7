@@ -10,6 +10,7 @@ type SupplierRepository interface {
 	FindAll() ([]models.Supplier, error)
 	FindByID(id uint) (models.Supplier, error)
 	Update(supplier *models.Supplier) error
+	Delete(id uint) error
 }
 
 type supplierRepo struct{ db *gorm.DB }
@@ -29,3 +30,5 @@ func (r *supplierRepo) FindByID(id uint) (models.Supplier, error) {
 }
 
 func (r *supplierRepo) Update(supplier *models.Supplier) error { return r.db.Save(supplier).Error }
+
+func (r *supplierRepo) Delete(id uint) error { return r.db.Delete(&models.Supplier{}, id).Error }

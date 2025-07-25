@@ -10,6 +10,7 @@ type SupplierService interface {
 	All() ([]models.Supplier, error)
 	ByID(id uint) (models.Supplier, error)
 	Update(*models.Supplier) error
+	Delete(id uint) error
 }
 
 type supplierService struct {
@@ -24,3 +25,4 @@ func (s *supplierService) Create(m *models.Supplier) error       { return s.repo
 func (s *supplierService) All() ([]models.Supplier, error)       { return s.repo.FindAll() }
 func (s *supplierService) ByID(id uint) (models.Supplier, error) { return s.repo.FindByID(id) }
 func (s *supplierService) Update(m *models.Supplier) error       { return s.repo.Update(m) }
+func (s *supplierService) Delete(id uint) error                  { return s.repo.Delete(id) }

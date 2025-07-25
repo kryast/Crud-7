@@ -27,3 +27,6 @@ curl http://localhost:8080/suppliers/1
 
 PUT
 curl -X PUT http://localhost:8080/suppliers/1 -H "Content-Type: application/json" -d '{"name":"PT Sumber Jaya Updated","email":"contact@sumberjaya.com","phone":"021999","address":"Bekasi"}'
+
+DELETE
+curl -X DELETE http://localhost:8080/suppliers/1
