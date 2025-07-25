@@ -9,6 +9,7 @@ type SupplierRepository interface {
 	Create(supplier *models.Supplier) error
 	FindAll() ([]models.Supplier, error)
 	FindByID(id uint) (models.Supplier, error)
+	Update(supplier *models.Supplier) error
 }
 
 type supplierRepo struct{ db *gorm.DB }
@@ -26,3 +27,5 @@ func (r *supplierRepo) FindByID(id uint) (models.Supplier, error) {
 	var supplier models.Supplier
 	return supplier, r.db.First(&supplier, id).Error
 }
+
+func (r *supplierRepo) Update(supplier *models.Supplier) error { return r.db.Save(supplier).Error }
