@@ -24,6 +24,8 @@ func SetupRouter(ph *handlers.ProductHandler, sh *handlers.SupplierHandler, psh 
 
 	// ProductStock routes
 	r.POST("/product-stocks", psh.Create)
+	r.GET("/product-stocks", psh.GetAll)
+	r.GET("/product-stocks/:id", psh.GetByID)
 
 	return r
 }

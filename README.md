@@ -36,3 +36,7 @@ Product Stock
 
 POST
 curl -X POST http://localhost:8080/product-stocks -H "Content-Type: application/json" -d '{"product_id":1,"supplier_id":1,"quantity":100}'
+
+GET
+curl http://localhost:8080/product-stocks
+curl http://localhost:8080/product-stocks/1
