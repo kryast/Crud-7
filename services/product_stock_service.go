@@ -11,6 +11,7 @@ type ProductStockService interface {
 	Create(*models.ProductStock) error
 	All() ([]models.ProductStock, error)
 	ByID(id uint) (models.ProductStock, error)
+	Update(*models.ProductStock) error
 }
 
 type productStockService struct {
@@ -32,3 +33,11 @@ func (s *productStockService) Create(m *models.ProductStock) error {
 func (s *productStockService) All() ([]models.ProductStock, error) { return s.repo.FindAll() }
 
 func (s *productStockService) ByID(id uint) (models.ProductStock, error) { return s.repo.FindByID(id) }
+
+func (s *productStockService) Update(m *models.ProductStock) error {
+	if m.LastRestock == nil {
+		now := time.Now()
+		m.LastRestock = &now
+	}
+	return s.repo.Update(m)
+}

@@ -26,6 +26,7 @@ func SetupRouter(ph *handlers.ProductHandler, sh *handlers.SupplierHandler, psh 
 	r.POST("/product-stocks", psh.Create)
 	r.GET("/product-stocks", psh.GetAll)
 	r.GET("/product-stocks/:id", psh.GetByID)
+	r.PUT("/product-stocks/:id", psh.Update)
 
 	return r
 }

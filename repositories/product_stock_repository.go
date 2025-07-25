@@ -9,6 +9,7 @@ type ProductStockRepository interface {
 	Create(stock *models.ProductStock) error
 	FindAll() ([]models.ProductStock, error)
 	FindByID(id uint) (models.ProductStock, error)
+	Update(stock *models.ProductStock) error
 }
 
 type productStockRepo struct{ db *gorm.DB }
@@ -28,3 +29,5 @@ func (r *productStockRepo) FindByID(id uint) (models.ProductStock, error) {
 	err := r.db.Preload("Product").Preload("Supplier").First(&stock, id).Error
 	return stock, err
 }
+
+func (r *productStockRepo) Update(stock *models.ProductStock) error { return r.db.Save(stock).Error }
