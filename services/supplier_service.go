@@ -7,6 +7,8 @@ import (
 
 type SupplierService interface {
 	Create(*models.Supplier) error
+	All() ([]models.Supplier, error)
+	ByID(id uint) (models.Supplier, error)
 }
 
 type supplierService struct {
@@ -17,4 +19,6 @@ func NewSupplierService(r repositories.SupplierRepository) SupplierService {
 	return &supplierService{r}
 }
 
-func (s *supplierService) Create(m *models.Supplier) error { return s.repo.Create(m) }
+func (s *supplierService) Create(m *models.Supplier) error       { return s.repo.Create(m) }
+func (s *supplierService) All() ([]models.Supplier, error)       { return s.repo.FindAll() }
+func (s *supplierService) ByID(id uint) (models.Supplier, error) { return s.repo.FindByID(id) }

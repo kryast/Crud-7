@@ -20,3 +20,7 @@ Supplier
 
 POST
 curl -X POST http://localhost:8080/suppliers -H "Content-Type: application/json" -d '{"name":"PT Sumber Jaya","email":"sales@sumberjaya.com","phone":"021777","address":"Jakarta"}'
+
+GET
+curl http://localhost:8080/suppliers
+curl http://localhost:8080/suppliers/1
